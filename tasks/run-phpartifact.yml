@@ -39,6 +39,11 @@
     composer_phar_file: "{{ phpartifact_composer_phar_file }}"
     composer_install_directories: "{{ artifact_composer_install }}"
 
+- name: Execute defined shell commands
+  shell: "{{ item }}"
+  loop: "{{ artifact.commands }}"
+  when: artifact.commands is defined
+
 - include_role:
     name: archive
   vars:
