@@ -25,7 +25,7 @@
     force: yes
     accept_hostkey: yes
     version: "{{ artifact_version }}"
-    key_file: "{{ artifact.key_file | default('~/.ssh/id_rsa') }}"
+    key_file: "{{ artifact.key_file | default(omit) }}"
 
 - name: Create list for composer installable directories
   set_fact:
