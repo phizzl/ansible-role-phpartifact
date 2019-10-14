@@ -33,7 +33,7 @@
   loop: "{{ artifact.composer_install_directories }}"
 
 - include_role:
-    name: composer
+    name: phizzl.composer
   vars:
     composer_php_executable: "{{ phpartifact_php_executable }}"
     composer_phar_file: "{{ phpartifact_composer_phar_file }}"
@@ -47,7 +47,7 @@
     chdir: "{{ artifact_workdir }}"
 
 - include_role:
-    name: archive
+    name: phizzl.archive
   vars:
     archive_directories:
       - path: "{{ artifact_workdir }}"
