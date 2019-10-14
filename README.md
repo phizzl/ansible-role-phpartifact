@@ -27,6 +27,7 @@ This list contains the definitions for all artifacts to build
 | `key_file` | The private key file to use for GIT | no | ~/.ssh/id_rsa |
 | `excludes` | List of files and directories to exclude from artifact | no |  [] |
 | `keep_workdir` | Keep cloned repo after the artifact was built? | no |  no |
+| `commands` | List of shell commands to execute after `composer install` | no |  / |
 
 
 #### `composer_install_directories` details
