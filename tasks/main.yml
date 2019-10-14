@@ -1,0 +1,18 @@
+---
+- name: Create work dir
+  file:
+    path: "{{ phpartifact_workdir }}"
+    state: directory
+    recurse: yes
+
+- name: Create diretory to store generated archives
+  file:
+    path: "{{ phpartifact_archivedir }}"
+    state: directory
+    recurse: yes
+
+- name: Create PHP artifact
+  include_tasks: run-phpartifact.yml
+  loop: "{{ phpartifact_sources }}"
+  loop_control:
+    loop_var: artifact

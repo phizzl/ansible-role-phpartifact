@@ -1,0 +1,9 @@
+---
+galaxy_info:
+  role_name: phpartifact
+  author: phizzl
+  description: Role to generate artifacts for PHP applications
+
+dependencies:
+  - role: phizzl.composer
+  - role: phizzl.archive

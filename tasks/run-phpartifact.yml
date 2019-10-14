@@ -1,0 +1,55 @@
+---
+- name: Determine artifact version
+  set_fact:
+    artifact_version: "{{ artifact.version | default('HEAD') }}"
+    artifact_composer_install: []
+
+- name: Generate unique identifier
+  set_fact:
+    artifact_uid: "{{ artifact_version }}-{{ ansible_date_time.iso8601_micro | to_uuid }}"
+
+- name: Determine unique workdir for artifact
+  set_fact:
+    artifact_workdir: "{{ phpartifact_workdir }}/{{ artifact_uid }}"
+
+- name: Create directory for checkout
+  file:
+    path: "{{ artifact_workdir }}"
+    state: directory
+    recurse: yes
+
+- name: Checkout repository
+  git:
+    repo: "{{ artifact.repo }}"
+    dest: "{{ artifact_workdir }}"
+    force: yes
+    accept_hostkey: yes
+    version: "{{ artifact_version }}"
+    key_file: "{{ artifact.key_file | default('~/.ssh/id_rsa') }}"
+
+- name: Create list for composer installable directories
+  set_fact:
+    artifact_composer_install: "{{ artifact_composer_install }} + [ { 'path':'{{ artifact_workdir+'/'+item.path }}', 'extraflags':'{{ item.extraflags | default('')}}' } ]"
+  loop: "{{ artifact.composer_install_directories }}"
+
+- include_role:
+    name: composer
+  vars:
+    composer_php_executable: "{{ phpartifact_php_executable }}"
+    composer_phar_file: "{{ phpartifact_composer_phar_file }}"
+    composer_install_directories: "{{ artifact_composer_install }}"
+
+- include_role:
+    name: archive
+  vars:
+    archive_directories:
+      - path: "{{ artifact_workdir }}"
+        dest: "{{ phpartifact_archivedir }}/{{ version }}.tgz"
+        excludes: "{{ artifact.excludes }}"
+        remove: true
+
+- name: Remove unique work dir
+  file:
+    path: "{{ artifact_workdir }}"
+    state: absent
+  when: artifact.keep_workdir is not defined or artifact.keep_workdir != 'yes'

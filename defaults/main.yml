@@ -1,0 +1,6 @@
+---
+phpartifact_php_executable: "php"
+phpartifact_composer_phar_file: "~/composer.phar"
+phpartifact_workdir: "/tmp/php_artifact_workdir"
+phpartifact_archivedir: "~/phpartifact/archives"
+phpartifact_sources: []
