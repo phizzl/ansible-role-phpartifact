@@ -51,7 +51,7 @@
   vars:
     archive_directories:
       - path: "{{ artifact_workdir }}"
-        dest: "{{ phpartifact_archivedir }}/{{ version }}.tgz"
+        dest: "{{ phpartifact_archivedir }}/{{ artifact_version }}.tgz"
         excludes: "{{ artifact.excludes }}"
         remove: true
 
