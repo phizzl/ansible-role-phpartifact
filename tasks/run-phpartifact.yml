@@ -29,7 +29,7 @@
 
 - name: Create list for composer installable directories
   set_fact:
-    artifact_composer_install: "{{ artifact_composer_install }} + [ { 'path':'{{ artifact_workdir+'/'+item.path }}', 'extraflags':'{{ item.extraflags | default('')}}' } ]"
+    artifact_composer_install: "{{ artifact_composer_install }} + [ { 'path':'{{ artifact_workdir+'/' + item.path }}', 'extraflags':'{{ item.extraflags | default('') }}' } ]"
   loop: "{{ artifact.composer_install_directories }}"
 
 - include_role:
