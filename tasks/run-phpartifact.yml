@@ -43,6 +43,8 @@
   shell: "{{ item }}"
   loop: "{{ artifact.commands }}"
   when: artifact.commands is defined
+  args:
+    chdir: "{{ artifact_workdir }}"
 
 - include_role:
     name: archive
