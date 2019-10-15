@@ -3,6 +3,7 @@ galaxy_info:
   role_name: phpartifact
   author: phizzl
   description: Role to generate artifacts for PHP applications
+  license: "MIT"
 
 dependencies:
   - role: phizzl.composer
