@@ -12,7 +12,7 @@ A role to generate artifacts for PHP based applications
 | `phpartifact_composer_phar_file`| Path to the `composer.phar`. If it doesn't exist it will be instaled to the given location | "~/composer.phar" |
 | `phpartifact_workdir`| Workdir for this role. The given repo will be cloned to the given location. | "/tmp/php_artifact_workdir" |
 | `phpartifact_archivedir`| Path where the generated archives will be stored. | "~/phpartifact/archives" |
-| `phpartifact_sources`| The artifat definitions. See below for details. | [] |
+| `phpartifact_sources`| The artifact definitions. See below for details. | [] |
 
 
 ### `phpartifact_sources` details
