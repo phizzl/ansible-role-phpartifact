@@ -7,4 +7,6 @@ galaxy_info:
 
 dependencies:
   - role: phizzl.composer
+    version: v0.0.1
   - role: phizzl.archive
+    version: v0.0.1
