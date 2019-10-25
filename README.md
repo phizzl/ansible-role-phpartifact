@@ -28,6 +28,7 @@ This list contains the definitions for all artifacts to build
 | `excludes` | List of files and directories to exclude from artifact | no |  [] |
 | `keep_workdir` | Keep cloned repo after the artifact was built? | no |  no |
 | `commands` | List of shell commands to execute after `composer install` | no |  / |
+| `force` | Build artifact even if the target file already exists | no |  no |
 
 
 #### `composer_install_directories` details
