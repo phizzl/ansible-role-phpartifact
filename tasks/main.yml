@@ -12,7 +12,7 @@
     recurse: yes
 
 - name: Create PHP artifact
-  include_tasks: run-phpartifact.yml
+  include_tasks: phpartifact-run.yml
   loop: "{{ phpartifact_sources }}"
   loop_control:
     loop_var: artifact
