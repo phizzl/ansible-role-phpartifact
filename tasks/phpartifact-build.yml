@@ -1,4 +1,10 @@
 ---
+- name: Ensure archivedir exists
+  file:
+    path: "{{ artifact_archivedir }}"
+    state: directory
+    recurse: yes
+
 - name: Generate unique identifier
   set_fact:
     artifact_uid: "{{ artifact_version }}-{{ ansible_date_time.iso8601_micro | to_uuid }}"
