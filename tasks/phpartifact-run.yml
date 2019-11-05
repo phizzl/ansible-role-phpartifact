@@ -3,10 +3,11 @@
   set_fact:
     artifact_version: "{{ artifact.version | default('HEAD') }}"
     artifact_composer_install: []
+    artifact_archivedir: "{{ artifact.archivedir | default(phpartifact_archivedir) }}"
 
 - name: Determine target file
   set_fact:
-    artifact_target_file: "{{ artifact.archivedir | default(phpartifact_archivedir) }}/{{ artifact_version }}.tgz"
+    artifact_target_file: "{{ artifact_archivedir }}/{{ artifact_version }}.tgz"
 
 - name: Check if the target file exists
   stat:
