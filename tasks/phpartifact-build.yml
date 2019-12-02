@@ -32,6 +32,7 @@
   set_fact:
     artifact_composer_install: "{{ artifact_composer_install }} + [ { 'path':'{{ artifact_workdir+'/' + item.path }}', 'extraflags':'{{ item.extraflags | default('') }}' } ]"
   loop: "{{ artifact.composer_install_directories }}"
+  when: artifact.composer_install_directories is defined
 
 - include_role:
     name: phizzl.composer
